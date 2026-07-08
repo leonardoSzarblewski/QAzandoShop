@@ -10,7 +10,7 @@ const user = {
 describe('login', () => {
   
   beforeEach(() => {
-    cy.visit('/')
+    cy.visit('/login')
   })
 
   it('Should log in successfully', () => {
