@@ -1,0 +1,25 @@
+# Node dependencies
+node_modules/
+
+# Optional npm/yarn files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+.yarn/
+
+# Cypress output
+cypress/screenshots/
+cypress/videos/
+cypress/reports/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE / editor files
+.vscode/
+.idea/
+*.swp
+*.swo
