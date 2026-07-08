@@ -1,6 +1,5 @@
 import { userData } from '../support/factories/user'
 
-
 describe('login', () => {
   
   beforeEach(() => {
