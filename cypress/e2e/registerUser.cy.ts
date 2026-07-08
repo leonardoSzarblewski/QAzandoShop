@@ -1,6 +1,6 @@
 import { userData } from '../support/factories/user'
 
-describe('Cadastrar usuário', () => {
+describe('Register User', () => {
   
   beforeEach(() => {
     cy.visit('/register')
