@@ -54,4 +54,20 @@ describe('Register User', () => {
 
     cy.get('#errorMessageFirstName').should('contain', 'O campo e-mail deve ser prenchido corretamente')
   })
+
+  context('registration through the login screen link', () => {
+      it('should register the user through the link on the login screen', () => {
+        cy.visit('/login')
+        cy.get('#createAccount').click()
+
+        cy.fillRegistration(userData.name, userData.email, userData.password)
+        cy.get('#btnRegister').click()
+
+        cy.get('#swal2-title').should('contain', 'Cadastro realizado!')
+        cy.get('#swal2-html-container').should('contain', `Bem-vindo ${userData.name}`)
+
+        cy.contains('button', 'OK').click()
+        cy.get('#userLogged').should('contain', userData.name)
+      })
+  })
 })
