@@ -6,7 +6,7 @@ module.exports = defineConfig({
   allowCypressEnv: false,
 
   e2e: {
-    baseUrl: "https://automationpratice.com.br",
+    baseUrl: "https://automationpratice.com.br/login",
     specPattern: "cypress/e2e/**/*.cy.ts",
     supportFile: "cypress/support/e2e.ts",
 
