@@ -3,7 +3,7 @@ import { userData } from '../support/factories/user'
 describe('login', () => {
   
   beforeEach(() => {
-    cy.visit('/')
+    cy.visit('/login')
 
     cy.fillsLogin(userData.email, userData.password)
     cy.get('#btnLogin').click()
