@@ -1,6 +1,6 @@
 import { userData } from '../support/factories/user'
 
-describe('login', () => {
+describe('login user', () => {
   
   beforeEach(() => {
     cy.visit('/login')
