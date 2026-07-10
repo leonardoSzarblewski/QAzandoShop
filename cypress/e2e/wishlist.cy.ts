@@ -16,12 +16,10 @@ describe('login', () => {
         Devemos evitar o uso do seletor do cypress que utiliza o caminho completo do elemento,  
         utilizamos aqui pois os elementos não tem data-cy e nem id, e não conseguimos selecionar de outra forma.
     **/
-    cy.get(':nth-child(4) > .offcanvas-toggle > .fa').click()
-    cy.get('#menuShopText').click()
-    cy.get(':nth-child(2) > :nth-child(1) > .mobile-sub-menu > :nth-child(1) > a').click()
+    cy.openShop()
     cy.get(':nth-child(1) > .product_wrappers_one > .thumb > .actions > .wishlist').click()
 
-    cy.get('#swal2-html-container').should('contain', 'Added to Wishlist')  
+    cy.get('#swal2-html-container').should('contain', 'Added to Wishlist')
     cy.contains('button', 'OK').click()
 
     cy.get('.mobile-right-side > .header-action-link > :nth-child(2) > .offcanvas-toggle > .fa').click()
@@ -29,9 +27,7 @@ describe('login', () => {
   })
 
   it('deve adicionar um item da lista de desejo através dos detalhes do produto', () => {
-    cy.get(':nth-child(4) > .offcanvas-toggle > .fa').click()
-    cy.get('#menuShopText').click()
-    cy.get(':nth-child(2) > :nth-child(1) > .mobile-sub-menu > :nth-child(1) > a').click()
+    cy.openShop()
     cy.get(':nth-child(1) > .product_wrappers_one > .thumb > .image > .hover-image').click()
     cy.contains('a', 'Add To Wishlist').click()
 

@@ -3,6 +3,7 @@ declare global {
     interface Chainable {
       fillsLogin(email: string, password: string): Chainable<void>;
       fillRegistration(name: string, email: string, password: string): Chainable<void>;
+      openShop(): Chainable<void>;
     }
   }
 }
