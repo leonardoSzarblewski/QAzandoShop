@@ -1,4 +1,4 @@
-import { userData } from '../support/factories/user'
+import { userData } from '../../support/factories/user'
 
 describe('Register User', () => {
   
