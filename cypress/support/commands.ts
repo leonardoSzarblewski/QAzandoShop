@@ -24,3 +24,9 @@ Cypress.Commands.add('openDetailsCart', () => {
     cy.get(':nth-child(3) > .offcanvas-toggle > .fa').click();
     cy.contains('a', 'View Cart').click();
 });
+
+// Deve adicionar um item ao carrinho de compras
+Cypress.Commands.add('addItemCart', (item: string) => {
+    cy.get(item).click()
+    cy.contains('a', 'Add To Cart').click();
+});
