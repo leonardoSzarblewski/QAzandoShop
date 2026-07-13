@@ -4,6 +4,7 @@ declare global {
       fillsLogin(email: string, password: string): Chainable<void>;
       fillRegistration(name: string, email: string, password: string): Chainable<void>;
       openShop(): Chainable<void>;
+      openDetailsCart(): Chainable<void>;
     }
   }
 }
