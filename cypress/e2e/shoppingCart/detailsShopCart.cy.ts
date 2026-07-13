@@ -13,19 +13,44 @@ describe('Shopping Cart', () => {
     cy.openDetailsCart()
   })
 
-  it.only('deve alterar o valor total ao deletar um item do carrinho', () => {
+  it('should change the total value when adding an item to the cart', () => {
+    cy.contains('a', 'Green Dress For Woman').should('not.exist')
+    cy.contains('p', '$107.00').should('be.visible')
 
+    cy.openShop()
+    cy.addItemCart(':nth-child(1) > .product_wrappers_one > .thumb > .image > .hover-image')
+    
+    cy.get('#swal2-html-container').should('contain', 'Successfully added to your Cart')  
+    cy.openDetailsCart()
+
+    cy.contains('a', 'Green Dress For Woman').should('exist')
+    cy.contains('p', '$145.00').should('be.visible')
   })
 
-    it.only('deve deletar todos os itens do carrinho', () => {
-
+  it('should change the total value when deleting an item from the cart', () => {
+    cy.contains('a', 'Fit-Flare Dress').should('exist')
+    cy.get(':nth-child(1) > .product_remove > .fa').click()
+    cy.contains('a', 'Fit-Flare Dress').should('not.exist')
   })
 
-    it.only('deve indicar que o cupom está invalido', () => {
+  it('should delete all items from the cart', () => {
+    cy.contains('button', 'Clear cart').click()
+    cy.contains('h2', 'YOUR CART IS EMPTY').should('be.visible')
+    cy.contains('a', 'Continue Shopping').click()
 
+    cy.url().should('include', '/shop')
   })
 
-      it.only('deve acessar a tela do checkout através dos detalhes do carrinho', () => {
+  it('should indicate that the discount coupon is invalid', () => {
+    cy.get('.mb-2').type('INVALIDCOUPON')
+    cy.get('form > .theme-btn-one').click() 
 
+    cy.get('#swal2-html-container').should('contain', 'Invalid Cuppon Code')
+    cy.contains('button', 'OK').click()
+  })
+
+  it('should access the checkout screen through the cart details', () => {
+    cy.contains('a', 'Proceed to Checkout').click()
+    cy.url().should('include', '/checkout-one')
   })
 })
