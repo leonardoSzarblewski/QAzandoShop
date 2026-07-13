@@ -17,9 +17,7 @@ describe('Shopping Cart', () => {
     cy.get('#offcanvas-add-cart > .offcanvas-header > .offcanvas-close').click()
 
     cy.openShop()
-
-    cy.get(':nth-child(4) > .product_wrappers_one > .thumb > .image > .hover-image').click()
-    cy.contains('a', 'Add To Cart').click()
+    cy.addItemCart(':nth-child(4) > .product_wrappers_one > .thumb > .image > .hover-image')
 
     cy.get('#swal2-html-container').should('contain', 'Successfully added to your Cart')
 
@@ -29,9 +27,7 @@ describe('Shopping Cart', () => {
 
   it('should display an error message when trying to add an item that is already in the cart', () => {
     cy.openShop()
-
-    cy.get(':nth-child(5) > .product_wrappers_one > .thumb > .image > .hover-image').click()
-    cy.contains('a', 'Add To Cart').click()    
+    cy.addItemCart(':nth-child(5) > .product_wrappers_one > .thumb > .image > .hover-image')
 
     cy.get('#swal2-html-container').should('contain', 'This product is already added in your Cart')
   })
