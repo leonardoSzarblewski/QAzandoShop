@@ -1,6 +1,6 @@
 import { userData } from '../support/factories/user'
 
-describe('login', () => {
+describe('Wishlist', () => {
   /**
       Devemos evitar o uso do seletor do Cypress que utiliza o caminho completo do elemento.
       Utilizamos aqui pois os elementos não têm data-cy nem id, e não conseguimos selecionar de outra forma.

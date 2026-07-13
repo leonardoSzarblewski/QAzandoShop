@@ -1,6 +1,6 @@
 import { userData } from '../../support/factories/user'
 
-describe('Shopping Cart', () => {
+describe('Shopping Cart Details', () => {
   
   beforeEach(() => {
     cy.visit('/login')
