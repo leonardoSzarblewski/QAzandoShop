@@ -47,5 +47,16 @@ describe('Shopping Cart', () => {
     
   })
 
+  it('should access the checkout screen through the shopping cart', () => {
+    cy.get(':nth-child(3) > .offcanvas-toggle > .fa').click() 
+    cy.contains(':nth-child(2) > .theme-btn-one', 'Checkout').click()
 
+    cy.url().should('include', '/checkout-one')
+  })
+
+  it('should access the details screen through the shopping cart', () => {
+    cy.openDetailsCart()
+
+    cy.url().should('include', '/cart')
+  })
 })
