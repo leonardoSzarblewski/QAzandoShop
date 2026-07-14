@@ -1,0 +1,61 @@
+name: Cypress CI
+
+# Define quando a pipeline será executada
+on: [push, pull_request]
+
+jobs:
+  cypress-tests:
+    # Sistema operacional da máquina virtual
+    runs-on: ubuntu-latest
+
+    # Executa em mais de um navegador
+    strategy:
+      fail-fast: false
+      matrix:
+        browser:
+          - chrome
+          - firefox
+          - edge
+
+    steps:
+      # Faz o download do código do repositório
+      - name: Checkout do projeto
+        uses: actions/checkout@v4
+
+      # Instala o Node
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Instala todas as dependências
+      - name: Instalar dependências
+        run: npm ci
+
+      # Executa os testes
+      - name: Executar testes Cypress
+        run: npm run cy:run -- --browser ${{ matrix.browser }}
+
+      # Salva vídeos gerados
+      - name: Upload dos vídeos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: videos-${{ matrix.browser }}
+          path: cypress/videos
+
+      # Salva screenshots quando houver falha
+      - name: Upload dos screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots-${{ matrix.browser }}
+          path: cypress/screenshots
+
+      # Salva os relatórios
+      - name: Upload dos relatórios
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reports-${{ matrix.browser }}
+          path: cypress/reports
