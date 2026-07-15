@@ -6,6 +6,7 @@ declare global {
       openShop(): Chainable<void>;
       openDetailsCart(): Chainable<void>;
       addItemCart(item: string): Chainable<void>;
+      openCheckout(): Chainable<void>;
     }
   }
 }

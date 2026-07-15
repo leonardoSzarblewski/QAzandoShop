@@ -30,3 +30,9 @@ Cypress.Commands.add('addItemCart', (item: string) => {
   cy.get(item).click();
   cy.contains('a', 'Add To Cart').click();
 });
+
+// Deve acessar a tela de checkout através do carrinho de compras
+Cypress.Commands.add('openCheckout', () => {
+  cy.get(':nth-child(3) > .offcanvas-toggle > .fa').click();
+  cy.contains(':nth-child(2) > .theme-btn-one', 'Checkout').click();
+});
