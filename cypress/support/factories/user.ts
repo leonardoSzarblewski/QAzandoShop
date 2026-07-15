@@ -1,7 +1,9 @@
 import { faker } from '@faker-js/faker';
 
 export interface userData {
-  name: string;
+  firstName: string;
+  lastName: string;
+  companyName: string;
   email: string;
   password: string;
   invalidEmail: string;
@@ -9,7 +11,9 @@ export interface userData {
 }
 
 export const userData: userData = {
-  name: faker.person.firstName(),
+  firstName: faker.person.firstName(),
+  lastName: faker.person.lastName(),
+  companyName: faker.company.name(),
   email: faker.internet.email(),
   password: faker.internet.password({
     length: 6,

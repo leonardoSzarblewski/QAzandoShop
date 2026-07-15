@@ -6,18 +6,18 @@ describe('Register User', () => {
   });
 
   it('should register a new user successfully', () => {
-    cy.fillRegistration(userData.name, userData.email, userData.password);
+    cy.fillRegistration(userData.firstName, userData.email, userData.password);
     cy.get('#btnRegister').click();
 
     cy.get('#swal2-title').should('contain', 'Cadastro realizado!');
-    cy.get('#swal2-html-container').should('contain', `Bem-vindo ${userData.name}`);
+    cy.get('#swal2-html-container').should('contain', `Bem-vindo ${userData.firstName}`);
 
     cy.contains('button', 'OK').click();
-    cy.get('#userLogged').should('contain', userData.name);
+    cy.get('#userLogged').should('contain', userData.firstName);
   });
 
   it('should display an error message when the name field is left empty', () => {
-    cy.fillRegistration(userData.name, userData.email, userData.password);
+    cy.fillRegistration(userData.firstName, userData.email, userData.password);
     cy.get('#user').clear();
     cy.get('#btnRegister').click();
 
@@ -25,7 +25,7 @@ describe('Register User', () => {
   });
 
   it('should display an error message when the email field is left empty', () => {
-    cy.fillRegistration(userData.name, userData.email, userData.password);
+    cy.fillRegistration(userData.firstName, userData.email, userData.password);
     cy.get('#email').clear();
     cy.get('#btnRegister').click();
 
@@ -36,7 +36,7 @@ describe('Register User', () => {
   });
 
   it('should display an error message when the password field is left empty', () => {
-    cy.fillRegistration(userData.name, userData.email, userData.password);
+    cy.fillRegistration(userData.firstName, userData.email, userData.password);
     cy.get('#password').clear();
     cy.get('#btnRegister').click();
 
@@ -47,7 +47,7 @@ describe('Register User', () => {
   });
 
   it('should display an error message when the password has fewer than 6 digits', () => {
-    cy.fillRegistration(userData.name, userData.email, userData.invalidPassword);
+    cy.fillRegistration(userData.firstName, userData.email, userData.invalidPassword);
     cy.get('#btnRegister').click();
 
     cy.get('#errorMessageFirstName').should(
@@ -57,7 +57,7 @@ describe('Register User', () => {
   });
 
   it('should display an error message when the email format is invalid', () => {
-    cy.fillRegistration(userData.name, userData.invalidEmail, userData.password);
+    cy.fillRegistration(userData.firstName, userData.invalidEmail, userData.password);
     cy.get('#btnRegister').click();
 
     cy.get('#errorMessageFirstName').should(
@@ -71,14 +71,14 @@ describe('Register User', () => {
       cy.visit('/login');
       cy.get('#createAccount').click();
 
-      cy.fillRegistration(userData.name, userData.email, userData.password);
+      cy.fillRegistration(userData.firstName, userData.email, userData.password);
       cy.get('#btnRegister').click();
 
       cy.get('#swal2-title').should('contain', 'Cadastro realizado!');
-      cy.get('#swal2-html-container').should('contain', `Bem-vindo ${userData.name}`);
+      cy.get('#swal2-html-container').should('contain', `Bem-vindo ${userData.firstName}`);
 
       cy.contains('button', 'OK').click();
-      cy.get('#userLogged').should('contain', userData.name);
+      cy.get('#userLogged').should('contain', userData.firstName);
     });
   });
 });
