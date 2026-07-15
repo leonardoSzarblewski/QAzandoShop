@@ -10,6 +10,11 @@ export interface userData {
   invalidPassword: string;
 }
 
+export interface address {
+  zipCode: string;
+  fullAddress: string;
+}
+
 export const userData: userData = {
   firstName: faker.person.firstName(),
   lastName: faker.person.lastName(),
@@ -22,4 +27,9 @@ export const userData: userData = {
   invalidPassword: faker.internet.password({
     length: 5,
   }),
+};
+
+export const address: address = {
+  zipCode: faker.location.zipCode(),
+  fullAddress: faker.location.streetAddress(),
 };
