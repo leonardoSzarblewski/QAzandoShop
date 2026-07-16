@@ -1,6 +1,6 @@
 import { userData } from '../../support/factories/user';
 
-describe('Checkout', () => {
+describe('About Us', () => {
   beforeEach(() => {
     cy.visit('/login');
 
@@ -10,7 +10,7 @@ describe('Checkout', () => {
     cy.contains('button', 'OK').click();
   });
 
-  it('deve acessar a pagina about us', () => {
+  it('should access the about us page', () => {
     cy.get(':nth-child(4) > .offcanvas-toggle').click();
     cy.get('#menuPagesMenu').click();
     cy.get('#aboutPage').click();
