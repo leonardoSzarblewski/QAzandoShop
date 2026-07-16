@@ -60,3 +60,10 @@ Cypress.Commands.add('selectPaymentMethod', (method: string, description: string
   cy.contains('p', description).should('be.visible');
   cy.get(':nth-child(2) > :nth-child(2) > .theme-btn-one').click();
 });
+
+// Acessa a pággina de contrate-nos
+Cypress.Commands.add('contactUs', () => {
+  cy.get(':nth-child(4) > .offcanvas-toggle > .fa').click();
+  cy.get('#menupagesText').click();
+  cy.get('#contact1Page').click();
+});

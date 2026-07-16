@@ -9,6 +9,7 @@ declare global {
       openCheckout(): Chainable<void>;
       fillsBillingInformation(email?: string): Chainable<void>;
       selectPaymentMethod(method: string, description: string): Chainable<void>;
+      contactUs(): Chainable<void>;
     }
   }
 }
