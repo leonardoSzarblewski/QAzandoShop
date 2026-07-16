@@ -7,6 +7,8 @@ declare global {
       openDetailsCart(): Chainable<void>;
       addItemCart(item: string): Chainable<void>;
       openCheckout(): Chainable<void>;
+      fillsBillingInformation(email?: string): Chainable<void>;
+      selectPaymentMethod(method: string, description: string): Chainable<void>;
     }
   }
 }

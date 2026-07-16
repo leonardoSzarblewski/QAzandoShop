@@ -1,3 +1,6 @@
+import { userData, address } from '../support/factories/user';
+import { faker } from '@faker-js/faker';
+
 // Preenche formulário de login
 Cypress.Commands.add('fillsLogin', (email: string, password: string) => {
   cy.get('#user').type(email);
@@ -19,20 +22,41 @@ Cypress.Commands.add('openShop', () => {
   cy.get(':nth-child(2) > :nth-child(1) > .mobile-sub-menu > :nth-child(1) > a').click();
 });
 
-// Deve acessar os detalhes do carrinho de compras
+// Acessa os detalhes do carrinho de compras
 Cypress.Commands.add('openDetailsCart', () => {
   cy.get(':nth-child(3) > .offcanvas-toggle > .fa').click();
   cy.contains('a', 'View Cart').click();
 });
 
-// Deve adicionar um item ao carrinho de compras
+// Adiciona um item ao carrinho de compras
 Cypress.Commands.add('addItemCart', (item: string) => {
   cy.get(item).click();
   cy.contains('a', 'Add To Cart').click();
 });
 
-// Deve acessar a tela de checkout através do carrinho de compras
+// Acessar a tela de checkout através do carrinho de compras
 Cypress.Commands.add('openCheckout', () => {
   cy.get(':nth-child(3) > .offcanvas-toggle > .fa').click();
   cy.contains(':nth-child(2) > .theme-btn-one', 'Checkout').click();
+});
+
+// Preenche as informações para checkout
+Cypress.Commands.add('fillsBillingInformation', (email: string = userData.email) => {
+  cy.get('#fname').type(userData.firstName);
+  cy.get('#lname').type(userData.lastName);
+  cy.get('#cname').type(userData.companyName);
+  cy.get('#email').type(email);
+  cy.get('#country').select(1);
+  cy.get('#city').select(1);
+  cy.get('#zip').type(address.zipCode);
+  cy.get('#faddress').type(address.fullAddress);
+  cy.get('#messages').type(faker.lorem.sentences());
+  cy.get('#materialUnchecked').check();
+});
+
+// Escolhe o método de pagamento
+Cypress.Commands.add('selectPaymentMethod', (method: string, description: string) => {
+  cy.contains('label', method).click();
+  cy.contains('p', description).should('be.visible');
+  cy.get(':nth-child(2) > :nth-child(2) > .theme-btn-one').click();
 });
