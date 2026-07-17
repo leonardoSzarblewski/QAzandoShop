@@ -44,7 +44,10 @@ cypress/
     wishlist/
       wishlist.cy.ts
   support/
-    commands.ts
+    commands/
+      pageCommands.ts
+      shoppingCommands.ts
+      userCommands.ts
     e2e.ts
     factories/
       user.ts
@@ -111,7 +114,7 @@ A suíte está dividida por fluxos de negócio:
 - `wishlist/`: integração com wishlist
 - `pages/`: páginas institucionais como About Us e Contact Us
 
-Os comandos customizados do Cypress estão centralizados em `cypress/support/commands.ts`, facilitando a reutilização entre os testes.
+Os comandos customizados do Cypress estão organizados em `cypress/support/commands/`, com arquivos separados por responsabilidade, como `pageCommands.ts`, `shoppingCommands.ts` e `userCommands.ts`.
 
 ## CI com GitHub Actions
 
