@@ -14,11 +14,7 @@ describe('Contact Us', () => {
   });
 
   it('should submit the contact form', () => {
-    cy.get('[name="name"]').type(userData.firstName);
-    cy.get('[name="email"]').type(userData.email);
-    cy.get('[name="phone"]').type('51989176524');
-    cy.get('[name="subject"]').type(faker.word.verb());
-    cy.get('[name="message"]').invoke('val', faker.lorem.sentences());
+    cy.fillsContactUs();
     cy.get('.submit_bitton_contact_one > .theme-btn-one').click();
 
     cy.get('#swal2-title').should('contain', 'Thank You');
@@ -33,10 +29,8 @@ describe('Contact Us', () => {
   });
 
   it('submits the form filling only the required fields', () => {
-    cy.get('[name="name"]').type(userData.firstName);
-    cy.get('[name="email"]').type(userData.email);
-    cy.get('[name="phone"]').type('51989176524');
-    cy.get('[name="subject"]').type(faker.word.verb());
+    cy.fillsContactUs();
+    cy.get('[name="message"]').invoke('val', faker.lorem.sentences()).clear();
     cy.get('.submit_bitton_contact_one > .theme-btn-one').click();
 
     cy.get('#swal2-title').should('contain', 'Thank You');
