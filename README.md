@@ -1,6 +1,6 @@
 # QAZANDOSHOP
 
-Projeto de automação de testes end-to-end (E2E) para a loja de demonstração da QAzando, utilizando Cypress com TypeScript e Webpack.
+Projeto de automação de testes end-to-end (E2E) para a loja de demonstração da QAzando, utilizando Cypress com TypeScript.
 
 ## Visão geral
 
@@ -22,7 +22,6 @@ A base de testes é configurada para acessar a aplicação em:
 
 - Cypress 15
 - TypeScript
-- Webpack
 - ESLint + Prettier
 - Faker.js
 
@@ -53,7 +52,6 @@ cypress.config.js
 eslint.config.js
 package.json
 tsconfig.json
-webpack.config.js
 ```
 
 ## Pré-requisitos
@@ -139,7 +137,6 @@ Essa configuração ajuda a garantir que o projeto continue validando seus fluxo
 ## Observações importantes
 
 - O arquivo `cypress.config.js` define a URL base da aplicação sob teste.
-- O projeto usa `webpack-dev-server` para servir o ambiente de teste do Cypress.
 - Dados dinâmicos de usuário e endereço são gerados com Faker.
 
 ## Objetivo
